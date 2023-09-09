@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 
-namespace WinUIExample
+namespace Sokutatsu
 {
     public partial class App : Application
     {

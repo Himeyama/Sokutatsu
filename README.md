@@ -1,4 +1,4 @@
-# WinUIExample
+# Sokutatsu
 This repository is an example of a small WinUI app.
 
 ![WinUI3 Screenshot](docs/screenshot.png)
