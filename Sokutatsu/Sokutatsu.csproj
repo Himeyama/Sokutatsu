@@ -16,6 +16,7 @@
     <Platforms>x64</Platforms>
     <NeutralLanguage>ja-JP</NeutralLanguage>
     <SelfContained>true</SelfContained>
+    <Version>23.09.10</Version>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <IsPublishable>True</IsPublishable>
     <AssemblyName>Sokutatsu</AssemblyName>
