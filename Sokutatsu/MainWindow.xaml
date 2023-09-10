@@ -14,10 +14,10 @@
         <DesktopAcrylicBackdrop />
     </Window.SystemBackdrop> -->
     <Grid
-        RowDefinitions="40, *, 24" x:Name="Window">
+        RowDefinitions="40, *, 0" Name="Window">
         <Grid Grid.Row="0">
             <Grid ColumnDefinitions="Auto, *">
-                <MenuBar Grid.Column="0">
+                <!-- <MenuBar Grid.Column="0">
                     <MenuBarItem Title="File" x:Uid="File">
                         <MenuFlyoutItem Text="Open" x:Uid="Open">
                             <MenuFlyoutItem.Icon>
@@ -113,11 +113,11 @@
                     <MenuBarItem Title="Help" x:Uid="Help">
                         <MenuFlyoutItem Text="About" x:Uid="About" />
                     </MenuBarItem>
-                </MenuBar>
-                <Grid x:Name="AppTitleBar" Grid.Column="1" />
+                </MenuBar> -->
+                <Grid Name="AppTitleBar" Grid.Column="1" />
             </Grid>
             <Grid>
-                <TextBlock x:Name="AppTitleTextBlock"
+                <TextBlock Name="AppTitleTextBlock"
                     x:Uid="AppTitleText"
                     Text="Sokutatsu"
                     VerticalAlignment="Center"
@@ -126,16 +126,16 @@
         </Grid>
 
         <Grid Grid.Row="1" RowDefinitions="8, *">
-            <ProgressBar Grid.Row="0" IsIndeterminate="True" ShowPaused="False" ShowError="False" Visibility="Collapsed" x:Name="Progress" />
-            <Grid Grid.Row="1" Margin="16, 8, 16, 8" ColumnDefinitions="*, *">
+            <ProgressBar Grid.Row="0" IsIndeterminate="True" ShowPaused="False" ShowError="False" Visibility="Collapsed" Name="Progress" />
+            <Grid Grid.Row="1" Margin="16, 4, 16, 16" ColumnDefinitions="*, *">
                 <Grid Margin="0, 0, 4, 0" Grid.Column="0" RowDefinitions="Auto, Auto, *, Auto">
-                    <TextBox PlaceholderText="URI (ex: http://localhost:8080)" Grid.Row="0"
-                        x:Name="Uri" />
+                    <TextBox TextChanged="ChangedUri" PlaceholderText="URI (ex: http://localhost:8080)" Grid.Row="0"
+                        Name="Uri" />
                     <Grid Grid.Row="1" Margin="0, 8, 0, 0" ColumnDefinitions="*, Auto, *">
-                        <ComboBox x:Name="Method" SelectionChanged="ChangeMethod"
+                        <ComboBox Name="Method" SelectionChanged="ChangeMethod"
                             ItemsSource="{x:Bind Methods}" PlaceholderText="Method" Grid.Column="0"
                             HorizontalAlignment="Stretch" />
-                        <Button Grid.Column="1" x:Name="OpenButton" Margin="8, 0, 0, 0"
+                        <Button Grid.Column="1" Name="OpenButton" Margin="8, 0, 0, 0" Visibility="Collapsed"
                             IsEnabled="False">
                             <StackPanel Orientation="Horizontal">
                                 <FontIcon Glyph="&#xED25;" FontFamily="Segoe MDL2 Assets" />
@@ -144,16 +144,16 @@
                         </Button>
                         <ComboBox ItemsSource="{x:Bind ContentTypes}" PlaceholderText="Content-Type"
                             Grid.Column="2" HorizontalAlignment="Stretch" Margin="8, 0, 0, 0"
-                            x:Name="ContentType" IsEnabled="False" />
+                            Name="ContentType" IsEnabled="False" />
                     </Grid>
                     <TextBox AcceptsReturn="True" Grid.Row="2" Margin="0, 8, 0, 0" TextWrapping="Wrap"
-                        PlaceholderText="Request body" x:Name="Body" />
-                    <Button Margin="0, 8, 0, 0" HorizontalAlignment="Stretch" Grid.Row="3"
-                        Style="{StaticResource AccentButtonStyle}" Content="Send" Click="ClickSend" />
+                        PlaceholderText="Request body" Name="Body" IsEnabled="False" />
+                    <Button Name="SendButton" Margin="0, 8, 0, 0" HorizontalAlignment="Stretch" Grid.Row="3"
+                        Style="{StaticResource AccentButtonStyle}" Content="Send" Click="ClickSend" IsEnabled="False" />
                 </Grid>
                 <Grid Margin="4, 0, 0, 0" Grid.Column="1">
                     <TextBox AcceptsReturn="True" TextWrapping="Wrap" PlaceholderText="Response body"
-                        x:Name="ResponseBody" />
+                        Name="ResponseBody" />
                 </Grid>
             </Grid>
         </Grid>
@@ -161,7 +161,7 @@
 
         <Grid Grid.Row="2">
             <Grid>
-                <TextBlock Grid.Column="0" Text="" x:Name="StatusBar" Margin="8, 0, 0, 0"
+                <TextBlock Grid.Column="0" Text="" Name="StatusBar" Margin="8, 0, 0, 0"
                     FontSize="12" VerticalAlignment="Center" />
             </Grid>
         </Grid>

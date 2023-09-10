@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Page
     x:Class="Sokutatsu.Dialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,7 +9,9 @@
     mc:Ignorable="d">
     <Page.Content>
         <Grid>
-            <TextBlock x:Name="Text" />
+            <ScrollViewer>
+                <TextBlock Name="Text" TextWrapping="Wrap" />
+            </ScrollViewer>
         </Grid>
     </Page.Content>
 </Page>

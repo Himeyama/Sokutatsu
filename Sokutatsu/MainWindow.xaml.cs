@@ -88,10 +88,18 @@ namespace Sokutatsu
             }
         }
 
+        void ChangedUri(object sender, RoutedEventArgs e){
+            /* Uri が入力されているかつメソッドが選択されている場合、送信ボタンを有効にする */
+            SendButton.IsEnabled = Uri.Text != string.Empty && Method.SelectedIndex != -1;
+        }
+
         void ChangeMethod(object sender, RoutedEventArgs e)
         {
             string method = Method.SelectedIndex == -1 ? "" : Methods[Method.SelectedIndex];
+            /* GET メソッド以外でコンポーネントを有効にする */
             OpenButton.IsEnabled = ContentType.IsEnabled = Body.IsEnabled = (method != "GET");
+            /* メソッドが選択され Uri が入力されている場合、送信ボタンを有効にする */
+            SendButton.IsEnabled = Uri.Text != string.Empty;
         }
     }
 }

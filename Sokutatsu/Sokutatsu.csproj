@@ -13,8 +13,15 @@
     <Nullable>enable</Nullable>
 
     <ApplicationManifest>app.manifest</ApplicationManifest>
-
-    <Platforms>x64;x86;ARM32;ARM64</Platforms>
+    <Platforms>x64</Platforms>
+    <NeutralLanguage>ja-JP</NeutralLanguage>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <IsPublishable>True</IsPublishable>
+    <AssemblyName>Sokutatsu</AssemblyName>
+    <Description>Sokutatsu is a software that sends a web request.</Description>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ApplicationIcon>Assets/Sokutatsu.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
