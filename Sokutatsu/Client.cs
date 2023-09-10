@@ -15,7 +15,7 @@ public class Client
         ContentType = contentType;
     }
 
-    public async Task<string> Post()
+    public async Task<string> Post(MainWindow mainWindow)
     {
         string responseText = "";
         try
@@ -28,18 +28,26 @@ public class Client
         }
         catch (Exception ex)
         {
-            File.AppendAllText("log.txt", $"POST {ex.Message}, {Body}, {ContentType}\n");
+            Dialog.ErrorDialog(mainWindow, ex.Message);
         }
 
         return responseText;
     }
 
-    public async Task<string> Get()
+    public async Task<string> Get(MainWindow mainWindow)
     {
         string responseText = "";
-        using HttpClient client = new();
-        HttpResponseMessage response = await client.GetAsync(Uri);
-        responseText = await response.Content.ReadAsStringAsync();
+
+        try
+        {
+            using HttpClient client = new();
+            HttpResponseMessage response = await client.GetAsync(Uri);
+            responseText = await response.Content.ReadAsStringAsync();
+        }
+        catch (Exception ex)
+        {
+            Dialog.ErrorDialog(mainWindow, ex.Message);
+        }
 
         return responseText;
     }

@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Window.SystemBackdrop>
-        <MicaBackdrop Kind="BaseAlt"/>
+        <MicaBackdrop Kind="BaseAlt" />
     </Window.SystemBackdrop>
     <!-- <Window.SystemBackdrop>
         <DesktopAcrylicBackdrop />
@@ -24,7 +24,7 @@
                                 <FontIcon Glyph="&#xED25;" FontFamily="Segoe MDL2 Assets" />
                             </MenuFlyoutItem.Icon>
                             <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="O"/>
+                                <KeyboardAccelerator Modifiers="Control" Key="O" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutItem Text="Save" x:Uid="Save">
@@ -32,7 +32,7 @@
                                 <FontIcon Glyph="&#xE74E;" FontFamily="Segoe MDL2 Assets" />
                             </MenuFlyoutItem.Icon>
                             <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="S"/>
+                                <KeyboardAccelerator Modifiers="Control" Key="S" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutItem Text="Save as" x:Uid="SaveAs">
@@ -40,7 +40,7 @@
                                 <FontIcon Glyph="&#xE792;" FontFamily="Segoe MDL2 Assets" />
                             </MenuFlyoutItem.Icon>
                             <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control, Shift" Key="S"  />
+                                <KeyboardAccelerator Modifiers="Control, Shift" Key="S" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutSeparator />
@@ -53,7 +53,7 @@
                                 <FontIcon Glyph="&#xE7A7;" FontFamily="Segoe MDL2 Assets" />
                             </MenuFlyoutItem.Icon>
                             <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="Z"/>
+                                <KeyboardAccelerator Modifiers="Control" Key="Z" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutSeparator />
@@ -62,7 +62,7 @@
                                 <FontIcon Glyph="&#xE8C6;" FontFamily="Segoe MDL2 Assets" />
                             </MenuFlyoutItem.Icon>
                             <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="X"/>
+                                <KeyboardAccelerator Modifiers="Control" Key="X" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutItem Text="Copy" x:Uid="Copy">
@@ -70,7 +70,7 @@
                                 <FontIcon Glyph="&#xE8C8;" FontFamily="Segoe MDL2 Assets" />
                             </MenuFlyoutItem.Icon>
                             <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="C"/>
+                                <KeyboardAccelerator Modifiers="Control" Key="C" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutItem Text="Paste" x:Uid="Paste">
@@ -78,7 +78,7 @@
                                 <FontIcon Glyph="&#xE77F;" FontFamily="Segoe MDL2 Assets" />
                             </MenuFlyoutItem.Icon>
                             <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="V"/>
+                                <KeyboardAccelerator Modifiers="Control" Key="V" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                     </MenuBarItem>
@@ -125,26 +125,39 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="16, 8, 16, 8" ColumnDefinitions="*, *">
-            <Grid Margin="0, 0, 4, 0" Grid.Column="0" RowDefinitions="Auto, Auto, *, Auto">
-                <TextBox PlaceholderText="URI (ex: http://localhost:8080)" Grid.Row="0" x:Name="Uri" />
-                <Grid Grid.Row="1" Margin="0, 8, 0, 0" ColumnDefinitions="Auto, *, *">
-                    <Button Grid.Column="0" x:Name="OpenButton">
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xED25;" FontFamily="Segoe MDL2 Assets" />
-                            <TextBlock Text="Open" Margin="8, 0, 0, 0" />
-                        </StackPanel>
-                    </Button>
-                    <ComboBox ItemsSource="{x:Bind ContentTypes}" PlaceholderText="Content-Type" Grid.Column="1" HorizontalAlignment="Stretch" Margin="8, 0, 0, 0" x:Name="ContentType" />
-                    <ComboBox x:Name="Method" SelectionChanged="ChangeMethod" ItemsSource="{x:Bind Methods}" PlaceholderText="Method" Grid.Column="2" HorizontalAlignment="Stretch" Margin="8, 0, 0, 0" />
+        <Grid Grid.Row="1" RowDefinitions="8, *">
+            <ProgressBar Grid.Row="0" IsIndeterminate="True" ShowPaused="False" ShowError="False" Visibility="Collapsed" x:Name="Progress" />
+            <Grid Grid.Row="1" Margin="16, 8, 16, 8" ColumnDefinitions="*, *">
+                <Grid Margin="0, 0, 4, 0" Grid.Column="0" RowDefinitions="Auto, Auto, *, Auto">
+                    <TextBox PlaceholderText="URI (ex: http://localhost:8080)" Grid.Row="0"
+                        x:Name="Uri" />
+                    <Grid Grid.Row="1" Margin="0, 8, 0, 0" ColumnDefinitions="*, Auto, *">
+                        <ComboBox x:Name="Method" SelectionChanged="ChangeMethod"
+                            ItemsSource="{x:Bind Methods}" PlaceholderText="Method" Grid.Column="0"
+                            HorizontalAlignment="Stretch" />
+                        <Button Grid.Column="1" x:Name="OpenButton" Margin="8, 0, 0, 0"
+                            IsEnabled="False">
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon Glyph="&#xED25;" FontFamily="Segoe MDL2 Assets" />
+                                <TextBlock Text="Open" Margin="8, 0, 0, 0" />
+                            </StackPanel>
+                        </Button>
+                        <ComboBox ItemsSource="{x:Bind ContentTypes}" PlaceholderText="Content-Type"
+                            Grid.Column="2" HorizontalAlignment="Stretch" Margin="8, 0, 0, 0"
+                            x:Name="ContentType" IsEnabled="False" />
+                    </Grid>
+                    <TextBox AcceptsReturn="True" Grid.Row="2" Margin="0, 8, 0, 0" TextWrapping="Wrap"
+                        PlaceholderText="Request body" x:Name="Body" />
+                    <Button Margin="0, 8, 0, 0" HorizontalAlignment="Stretch" Grid.Row="3"
+                        Style="{StaticResource AccentButtonStyle}" Content="Send" Click="ClickSend" />
                 </Grid>
-                <TextBox Grid.Row="2" Margin="0, 8, 0, 0" TextWrapping="Wrap" PlaceholderText="Request body" x:Name="Body" />
-                <Button Margin="0, 8, 0, 0" HorizontalAlignment="Stretch" Grid.Row="3" Style="{StaticResource AccentButtonStyle}" Content="Send" Click="ClickSend" />
-            </Grid>
-            <Grid Margin="4, 0, 0, 0" Grid.Column="1">
-                <TextBox TextWrapping="Wrap" PlaceholderText="Response body" x:Name="ResponseBody" />
+                <Grid Margin="4, 0, 0, 0" Grid.Column="1">
+                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" PlaceholderText="Response body"
+                        x:Name="ResponseBody" />
+                </Grid>
             </Grid>
         </Grid>
+
 
         <Grid Grid.Row="2">
             <Grid>
