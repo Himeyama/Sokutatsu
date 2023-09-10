@@ -1,0 +1,1 @@
+dotnet pack .\Sokutatsu\Sokutatsu.csproj -c Release

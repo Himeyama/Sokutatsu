@@ -1,4 +1,4 @@
 # Sokutatsu
 Sokutatsu is a software that sends a web request.
 
-![Alt text](docs/screenshot.png)
+![Sokutatsu](https://raw.githubusercontent.com/Himeyama/Sokutatsu/master/docs/screenshot.png)
